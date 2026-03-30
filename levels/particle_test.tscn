@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cqfowlmnnlomn"]
+
+[ext_resource type="PackedScene" uid="uid://cyt2j2nenkm3m" path="res://entities/asteroid_field/asteroid_field.tscn" id="1_hatbe"]
+[ext_resource type="PackedScene" uid="uid://b3mixkcp4t75c" path="res://entities/planet/planet.tscn" id="2_6pfq1"]
+
+[node name="ParticleTest" type="Node2D" unique_id=453249942]
+
+[node name="GPUParticles2D" parent="." unique_id=1773267613 instance=ExtResource("1_hatbe")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=151891198]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Planet" parent="." unique_id=1960501346 instance=ExtResource("2_6pfq1")]
+position = Vector2(0, -19)

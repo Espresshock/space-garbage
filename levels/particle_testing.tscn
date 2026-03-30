@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://76q0v3sjuaa"]
+
+[ext_resource type="PackedScene" uid="uid://cyt2j2nenkm3m" path="res://entities/asteroid_field/asteroid_field.tscn" id="1_cd22n"]
+
+[node name="ParticleTesting" type="Node3D" unique_id=265263277]
+
+[node name="GPUParticles2D" parent="." unique_id=1773267613 instance=ExtResource("1_cd22n")]
+position = Vector2(557.2567, 137.10727)
