@@ -7,22 +7,12 @@
 [node name="ParticleTest" type="Node2D" unique_id=453249942]
 
 [node name="GPUParticles2D" parent="." unique_id=1773267613 instance=ExtResource("1_hatbe")]
-position = Vector2(-861, 430)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=151891198]
 zoom = Vector2(0.5, 0.5)
 
 [node name="Planet" parent="." unique_id=1960501346 instance=ExtResource("2_6pfq1")]
-position = Vector2(-861, 411)
+position = Vector2(0, -19)
 
-[node name="Planet2" parent="." unique_id=1758043335 instance=ExtResource("2_6pfq1")]
-position = Vector2(935, -470)
-animation = &"default"
-
-[node name="Planet3" parent="." unique_id=440566342 instance=ExtResource("2_6pfq1")]
-position = Vector2(935, 474)
-animation = &"default"
-
-[node name="Rocket" parent="." unique_id=288519791 node_paths=PackedStringArray("tween_target") instance=ExtResource("3_kpqg3")]
-position = Vector2(-862, 325)
-tween_target = NodePath("../Planet3")
+[node name="Rocket" parent="." unique_id=288519791 instance=ExtResource("3_kpqg3")]
+position = Vector2(-1, -105)

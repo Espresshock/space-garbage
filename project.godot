@@ -14,6 +14,17 @@ config/name="SpaceGarbage"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalFlightManager="*uid://djb7tw86yx06"
+
+[input]
+
+LMB={
+"deadzone": 0.2,
+"events": []
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

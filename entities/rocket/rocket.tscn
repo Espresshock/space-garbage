@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://4qe8jxs1geqc"]
+
+[ext_resource type="Script" uid="uid://cjt1goa6x1tcu" path="res://entities/rocket/rocket.gd" id="1_c1mwr"]
+[ext_resource type="Texture2D" uid="uid://2awb76do0jxk" path="res://assets/art/particles/muzzle_05.png" id="1_thuef"]
+[ext_resource type="Texture2D" uid="uid://ck52xdubqi6g7" path="res://assets/art/particles/smoke_05.png" id="2_c1mwr"]
+[ext_resource type="Texture2D" uid="uid://db0144s1t3vln" path="res://assets/art/rocket/spaceRockets_004.png" id="3_qkdku"]
+
+[sub_resource type="Curve" id="Curve_jm25m"]
+_data = [Vector2(0, 1), 0.0, 0.14192781, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_mmixm"]
+curve = SubResource("Curve_jm25m")
+
+[sub_resource type="Gradient" id="Gradient_qo67g"]
+colors = PackedColorArray(1, 0.5686275, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0c8xq"]
+gradient = SubResource("Gradient_qo67g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sypx0"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = -179.99998
+spread = 180.0
+initial_velocity_min = 0.049999997
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 98, 0)
+scale_min = 0.099999994
+scale_max = 0.19999999
+color_ramp = SubResource("GradientTexture1D_0c8xq")
+alpha_curve = SubResource("CurveTexture_mmixm")
+hue_variation_min = -0.100000024
+hue_variation_max = 0.09999997
+
+[sub_resource type="Curve" id="Curve_jvf0i"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0.09151411), 0.0, 0.0, 0, 0, Vector2(0.75, 0.6322795), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.864155, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jeubs"]
+curve = SubResource("Curve_jvf0i")
+
+[sub_resource type="Curve" id="Curve_thuef"]
+_limits = [0.2039932, 0.6, 0.0, 1.0]
+_data = [Vector2(0, 0.2039932), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c1mwr"]
+curve = SubResource("Curve_thuef")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ljktf"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+angle_min = -29.99999
+angle_max = 30.000011
+inherit_velocity_ratio = 0.1
+direction = Vector3(0, 5, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 60, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 4.9999976
+tangential_accel_min = -10.000002
+tangential_accel_max = 9.999997
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_c1mwr")
+alpha_curve = SubResource("CurveTexture_jeubs")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c1mwr"]
+polygon = PackedVector2Array(-20, -50, 20, -50, 20, 50, -20, 50)
+
+[node name="Rocket" type="Node2D" unique_id=288519791]
+script = ExtResource("1_c1mwr")
+
+[node name="EngineFlame" type="GPUParticles2D" parent="." unique_id=1999402228]
+position = Vector2(0, 73.000015)
+amount = 64
+texture = ExtResource("1_thuef")
+lifetime = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sypx0")
+
+[node name="EngineSmoke" type="GPUParticles2D" parent="." unique_id=1185536868]
+position = Vector2(-3, 11.000002)
+amount = 48
+texture = ExtResource("2_c1mwr")
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ljktf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1650902111]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_qkdku")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=602726297]
+occluder = SubResource("OccluderPolygon2D_c1mwr")
