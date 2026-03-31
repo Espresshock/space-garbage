@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dlxqn6kllcn4q"]
+
+[ext_resource type="Script" uid="uid://rb3nddt6fiqw" path="res://entities/flight_manager/flight_manager.gd" id="1_buh06"]
+
+[node name="FlightManager" type="Node2D" unique_id=1295775769]
+script = ExtResource("1_buh06")

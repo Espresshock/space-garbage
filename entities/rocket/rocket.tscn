@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ck52xdubqi6g7" path="res://assets/art/particles/smoke_05.png" id="2_c1mwr"]
 [ext_resource type="Texture2D" uid="uid://db0144s1t3vln" path="res://assets/art/rocket/spaceRockets_004.png" id="3_qkdku"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1mwr"]
-height = 107.95702
-
 [sub_resource type="Curve" id="Curve_jm25m"]
 _data = [Vector2(0, 1), 0.0, 0.14192781, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -75,32 +72,31 @@ scale_max = 0.39999998
 scale_curve = SubResource("CurveTexture_c1mwr")
 alpha_curve = SubResource("CurveTexture_jeubs")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c1mwr"]
+polygon = PackedVector2Array(-20, -50, 20, -50, 20, 50, -20, 50)
+
 [node name="Rocket" type="Node2D" unique_id=288519791]
-rotation = 0.015227996
 script = ExtResource("1_c1mwr")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=670207232]
-mass = 0.001
-angular_velocity = 0.43633232
-constant_force = Vector2(0, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1463555814]
-shape = SubResource("CapsuleShape2D_c1mwr")
-
-[node name="EngineFlame" type="GPUParticles2D" parent="RigidBody2D" unique_id=1999402228]
-position = Vector2(0, 73.00001)
+[node name="EngineFlame" type="GPUParticles2D" parent="." unique_id=1999402228]
+position = Vector2(0, 73.000015)
 amount = 64
 texture = ExtResource("1_thuef")
 lifetime = 2.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_sypx0")
 
-[node name="EngineSmoke" type="GPUParticles2D" parent="RigidBody2D" unique_id=1185536868]
-position = Vector2(-3, 11.000001)
+[node name="EngineSmoke" type="GPUParticles2D" parent="." unique_id=1185536868]
+position = Vector2(-3, 11.000002)
 amount = 48
 texture = ExtResource("2_c1mwr")
 lifetime = 3.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ljktf")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1650902111]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1650902111]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_qkdku")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=602726297]
+occluder = SubResource("OccluderPolygon2D_c1mwr")

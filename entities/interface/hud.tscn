@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://chool7c0dyqus"]
+
+[ext_resource type="Script" uid="uid://dw77ikat5gy5a" path="res://entities/interface/hud.gd" id="1_5l1rp"]
+
+[node name="HUD" type="Control" unique_id=504352199 node_paths=PackedStringArray("departure", "destination", "launch_button")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5l1rp")
+departure = NodePath("Panel/VBoxContainer/HBoxContainer/DeparturePlanet")
+destination = NodePath("Panel/VBoxContainer/HBoxContainer2/DestinationPlanet")
+launch_button = NodePath("Panel/VBoxContainer/Launch")
+
+[node name="Panel" type="Panel" parent="." unique_id=594422888]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 536.0
+offset_bottom = 326.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=782515582]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1338229843]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 56
+text = "Flight Plan"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=41680212]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Departure" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1168804548]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = "Departing:"
+
+[node name="DeparturePlanet" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1071792002]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = " "
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1459359481]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1584871476]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Destiantion" type="Label" parent="Panel/VBoxContainer/HBoxContainer2" unique_id=1126685746]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = "Destination:
+"
+
+[node name="DestinationPlanet" type="Label" parent="Panel/VBoxContainer/HBoxContainer2" unique_id=711265616]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 36
+text = " "
+
+[node name="Launch" type="Button" parent="Panel/VBoxContainer" unique_id=1620082482]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "LAUNCH ROCKET"
+
+[connection signal="button_up" from="Panel/VBoxContainer/Launch" to="." method="_on_launch_button_up"]

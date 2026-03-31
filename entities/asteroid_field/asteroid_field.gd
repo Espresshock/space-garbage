@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 		time = 0
 	else:
 		time += delta
-		print(time)
 
 
 func increase_amount_ration() -> void:

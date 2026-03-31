@@ -1,3 +1,28 @@
 [gd_scene format=3 uid="uid://ckjwg4ba6mic6"]
 
+[ext_resource type="Texture2D" uid="uid://s1icd0g4c8ph" path="res://assets/art/background/black.png" id="1_l8qe7"]
+[ext_resource type="PackedScene" uid="uid://btref0htg0ype" path="res://entities/system/system.tscn" id="1_wdj6m"]
+[ext_resource type="PackedScene" uid="uid://dlxqn6kllcn4q" path="res://entities/flight_manager/flight_manager.tscn" id="3_l8qe7"]
+[ext_resource type="PackedScene" uid="uid://4qe8jxs1geqc" path="res://entities/rocket/rocket.tscn" id="4_ifaiv"]
+[ext_resource type="PackedScene" uid="uid://chool7c0dyqus" path="res://entities/interface/hud.tscn" id="4_m1504"]
+
 [node name="Node2D" type="Node2D" unique_id=2011757385]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1266110805]
+zoom = Vector2(0.4, 0.4)
+
+[node name="background" type="Sprite2D" parent="." unique_id=342543928]
+z_index = -10
+scale = Vector2(12, 8)
+texture = ExtResource("1_l8qe7")
+
+[node name="System" parent="." unique_id=119891362 instance=ExtResource("1_wdj6m")]
+
+[node name="FlightManager" parent="." unique_id=1295775769 instance=ExtResource("3_l8qe7")]
+rocket = ExtResource("4_ifaiv")
+
+[node name="HUD" parent="." unique_id=504352199 instance=ExtResource("4_m1504")]
+offset_left = -1254.0
+offset_top = -654.0
+offset_right = -1254.0
+offset_bottom = -654.0

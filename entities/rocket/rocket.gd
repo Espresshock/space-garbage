@@ -1,7 +1,10 @@
 extends Node2D
+class_name rocket
 
-var rigid: RigidBody2D
-
+@export var target: Node
+var max_rocket_speed: float = 0.5
+var current_rocket_speed: float = 0
+var flight_time: float = 0
 #Tween from start location to random off screen location
 #if spawn is positive y axis; endpoint should always be positive x point
 #if spawn is negative y axis; endpoint should always be positive y point
@@ -10,32 +13,27 @@ var rigid: RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	current_rocket_speed = max_rocket_speed
 	pass # Replace with function body.
 
-
-
-# launch: tween to 1 constant force
-# breakaway; accellerate to 5
-
-
-func generate_random_target_vector() -> Vector2:
-	var target_vector = Vector2(0,0)
-	if position.y < 0:
-		target_vector.y = randf_range(-1600,-3000)
-	else:
-		target_vector.y = randf_range(1600,3000)
-
-	target_vector.x = randf_range(-2500,2500)
-	return target_vector
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	rotate_rocket(target, delta)
 	pass
 
+func lerp_to_target(_target: Node, _delta: float) -> void:
+	if current_rocket_speed > 0.2 && flight_time < 5:
+		current_rocket_speed -= 0.005
+	elif flight_time > 5:
+		current_rocket_speed += 0.005
+	var target_pos: Vector2 = _target.global_position
+	position = position.lerp(target_pos, _delta * current_rocket_speed)
+	flight_time += _delta
+	if position.distance_to(target_pos) < 75:
+		self.queue_free()
 
-#	var rocket_tween: Tween = get_tree().create_tween()
-	#var rocket_target: Vector2 = generate_random_target_vector()
-	#global_rotation = rocket_target.angle_to_point(position)
-	#rocket_tween.set_ease(Tween.EaseType.EASE_IN)
-	#rocket_tween.tween_property(self, "position", rocket_target, 25)
-	#rocket_tween.set_trans(Tween.TransitionType.TRANS_ELASTIC)
+func rotate_rocket(_target: Node, _delta: float) -> void:
+	var v = global_position - _target.global_position
+	var angle_to = transform.y.angle_to(v)
+	rotate(sign(angle_to) * min(_delta* 0.9, abs(angle_to)))
+	if angle_to < 0.25:
+		lerp_to_target(target, _delta)
