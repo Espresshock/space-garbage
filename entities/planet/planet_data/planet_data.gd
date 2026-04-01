@@ -1,7 +1,7 @@
 extends Node
 class_name PlanetData
 
-var planet_name
+var planet_name: String
 
 #input
 @export var inputs: Array[GlobalResources.RESOURCE]
@@ -61,3 +61,10 @@ func emit_sig_send_planet_data() -> void:
 		GlobalResources.current_planet_select = planet_name
 		GlobalResources.emit_sig_send_input_planet_data(inputs, input_stored)
 		GlobalResources.emit_sig_send_output_planet_data(outputs, output_stored)
+
+
+func remove_resource_from_storage(_quantity: int) -> void:
+	if output_stored[0] - _quantity > 0:
+		output_stored[0] -= _quantity
+	else:
+		output_stored[0] = 0

@@ -4,7 +4,7 @@ extends Control
 @export var resource_label_scene: PackedScene
 
 #planet information
-var planet_name: String
+@export var planet_name: Label
 @export var inputs_vbox: VBoxContainer
 @export var outputs_vbox: VBoxContainer
 
@@ -59,6 +59,8 @@ func _process_input_data(_resources: Array[GlobalResources.RESOURCE], _storage: 
 		new_resource_label.set_labels(resource, _storage[index])
 		index += 1
 
+	update_planet_name()
+
 func _process_output_data(_resources: Array[GlobalResources.RESOURCE], _storage: Array[int]) -> void:
 	var index: int = 0
 	if outputs_vbox.get_child_count() > 1:
@@ -73,13 +75,12 @@ func _process_output_data(_resources: Array[GlobalResources.RESOURCE], _storage:
 		outputs_vbox.add_child(new_resource_label)
 		new_resource_label.set_labels(resource, _storage[index])
 		index += 1
-	pass
+	
+	update_planet_name()
 
-func draw_selected_planet_data() -> void:
-	# update all the correct lables with data supplied using the signal.
-	# each signal goes to a function which independantly sets the correct input / output variables.
 
-	pass
+func update_planet_name() -> void:
+	planet_name.text = GlobalResources.current_planet_select
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

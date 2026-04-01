@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dw77ikat5gy5a" path="res://entities/interface/hud.gd" id="1_5l1rp"]
 [ext_resource type="PackedScene" uid="uid://swqiejrr6lfc" path="res://entities/interface/resource_labels/resource_labels.tscn" id="2_j2bcy"]
 
-[node name="HUD" type="Control" unique_id=504352199 node_paths=PackedStringArray("inputs_vbox", "outputs_vbox", "departure", "destination", "launch_button")]
+[node name="HUD" type="Control" unique_id=504352199 node_paths=PackedStringArray("planet_name", "inputs_vbox", "outputs_vbox", "departure", "destination", "launch_button")]
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -11,6 +11,7 @@ offset_right = 532.0
 grow_vertical = 2
 script = ExtResource("1_5l1rp")
 resource_label_scene = ExtResource("2_j2bcy")
+planet_name = NodePath("Panel/VBoxContainer2/PlanetInfo/HBoxContainer/PlanetName")
 inputs_vbox = NodePath("Panel/VBoxContainer2/PlanetInfo/InputsContainer")
 outputs_vbox = NodePath("Panel/VBoxContainer2/PlanetInfo/OutputsContainer")
 departure = NodePath("Panel/VBoxContainer2/VBoxContainer/HBoxContainer/DeparturePlanet")
