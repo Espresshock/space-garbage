@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://swqiejrr6lfc"]
+
+[ext_resource type="Script" uid="uid://fmkoqryrvjrn" path="res://entities/interface/resource_labels/resource_labels.gd" id="1_b5ohp"]
+
+[node name="ResourceLabels" type="HBoxContainer" unique_id=1012392192]
+size_flags_vertical = 3
+script = ExtResource("1_b5ohp")
+
+[node name="InputResource" type="Label" parent="." unique_id=100901610]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Water"
+
+[node name="InputStorage" type="Label" parent="." unique_id=1087612866]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
