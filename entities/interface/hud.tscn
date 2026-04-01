@@ -1,65 +1,190 @@
 [gd_scene format=3 uid="uid://chool7c0dyqus"]
 
 [ext_resource type="Script" uid="uid://dw77ikat5gy5a" path="res://entities/interface/hud.gd" id="1_5l1rp"]
+[ext_resource type="PackedScene" uid="uid://swqiejrr6lfc" path="res://entities/interface/resource_labels/resource_labels.tscn" id="2_j2bcy"]
 
-[node name="HUD" type="Control" unique_id=504352199 node_paths=PackedStringArray("departure", "destination", "launch_button")]
+[node name="HUD" type="Control" unique_id=504352199 node_paths=PackedStringArray("inputs_vbox", "outputs_vbox", "departure", "destination", "launch_button")]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 532.0
+grow_vertical = 2
 script = ExtResource("1_5l1rp")
-departure = NodePath("Panel/VBoxContainer/HBoxContainer/DeparturePlanet")
-destination = NodePath("Panel/VBoxContainer/HBoxContainer2/DestinationPlanet")
-launch_button = NodePath("Panel/VBoxContainer/Launch")
+resource_label_scene = ExtResource("2_j2bcy")
+inputs_vbox = NodePath("Panel/VBoxContainer2/PlanetInfo/InputsContainer")
+outputs_vbox = NodePath("Panel/VBoxContainer2/PlanetInfo/OutputsContainer")
+departure = NodePath("Panel/VBoxContainer2/VBoxContainer/HBoxContainer/DeparturePlanet")
+destination = NodePath("Panel/VBoxContainer2/VBoxContainer/HBoxContainer2/DestinationPlanet")
+launch_button = NodePath("Panel/VBoxContainer2/VBoxContainer/Launch")
 
 [node name="Panel" type="Panel" parent="." unique_id=594422888]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 5.0
-offset_right = 536.0
-offset_bottom = 326.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=782515582]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1338229843]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel" unique_id=1631755631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Currency" type="HBoxContainer" parent="Panel/VBoxContainer2" unique_id=368105318]
+layout_mode = 2
+
+[node name="Credits" type="Label" parent="Panel/VBoxContainer2/Currency" unique_id=1092214357]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Credits: "
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer2" unique_id=127234332]
+layout_mode = 2
+
+[node name="PlanetInfo" type="VBoxContainer" parent="Panel/VBoxContainer2" unique_id=1734803515]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=367072669]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Planet" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/HBoxContainer" unique_id=1144755608]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Planet: "
+
+[node name="PlanetName" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/HBoxContainer" unique_id=189022446]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = " "
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=1908339977]
+layout_mode = 2
+
+[node name="Labels" type="HBoxContainer" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=860338135]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Resource" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/Labels" unique_id=586308926]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resource"
+
+[node name="Stored" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/Labels" unique_id=2141421451]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stored"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=570007574]
+layout_mode = 2
+
+[node name="InputsContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=153749222]
+layout_mode = 2
+
+[node name="InputLabel" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/InputsContainer" unique_id=146821389]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Requires"
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=1628875558]
+layout_mode = 2
+
+[node name="OutputsContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/PlanetInfo" unique_id=178555772]
+layout_mode = 2
+
+[node name="OutputLabel" type="Label" parent="Panel/VBoxContainer2/PlanetInfo/OutputsContainer" unique_id=2004827956]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Produces"
+
+[node name="SellPlanet" type="VBoxContainer" parent="Panel/VBoxContainer2" unique_id=1062960720]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/SellPlanet" unique_id=1516217749]
+layout_mode = 2
+
+[node name="Planet" type="Label" parent="Panel/VBoxContainer2/SellPlanet/HBoxContainer" unique_id=1281778579]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Planet: "
+
+[node name="PlanetName" type="Label" parent="Panel/VBoxContainer2/SellPlanet/HBoxContainer" unique_id=60738639]
+layout_mode = 2
+text = " "
+
+[node name="Labels" type="HBoxContainer" parent="Panel/VBoxContainer2/SellPlanet" unique_id=637469412]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Resource" type="Label" parent="Panel/VBoxContainer2/SellPlanet/Labels" unique_id=352164770]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resource"
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer2/SellPlanet/Labels" unique_id=575225937]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Value"
+
+[node name="Inputs" type="HBoxContainer" parent="Panel/VBoxContainer2/SellPlanet" unique_id=835707430]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputResource" type="Label" parent="Panel/VBoxContainer2/SellPlanet/Inputs" unique_id=1215322335]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Water"
+
+[node name="InputValue" type="Label" parent="Panel/VBoxContainer2/SellPlanet/Inputs" unique_id=1005995623]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer2" unique_id=366223804]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2" unique_id=782515582]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2/VBoxContainer" unique_id=1338229843]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 56
 text = "Flight Plan"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=41680212]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer" unique_id=41680212]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Departure" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1168804548]
+[node name="Departure" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1168804548]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 36
 text = "Departing:"
 
-[node name="DeparturePlanet" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1071792002]
+[node name="DeparturePlanet" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1071792002]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 36
 text = " "
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1459359481]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1459359481]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1584871476]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer" unique_id=1584871476]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Destiantion" type="Label" parent="Panel/VBoxContainer/HBoxContainer2" unique_id=1126685746]
+[node name="Destiantion" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1126685746]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -67,18 +192,21 @@ theme_override_font_sizes/font_size = 36
 text = "Destination:
 "
 
-[node name="DestinationPlanet" type="Label" parent="Panel/VBoxContainer/HBoxContainer2" unique_id=711265616]
+[node name="DestinationPlanet" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=711265616]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 36
 text = " "
 
-[node name="Launch" type="Button" parent="Panel/VBoxContainer" unique_id=1620082482]
+[node name="Launch" type="Button" parent="Panel/VBoxContainer2/VBoxContainer" unique_id=1620082482]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 36
 text = "LAUNCH ROCKET"
 
-[connection signal="button_up" from="Panel/VBoxContainer/Launch" to="." method="_on_launch_button_up"]
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer2" unique_id=427601784]
+layout_mode = 2
+
+[connection signal="button_up" from="Panel/VBoxContainer2/VBoxContainer/Launch" to="." method="_on_launch_button_up"]

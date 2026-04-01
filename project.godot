@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalFlightManager="*uid://djb7tw86yx06"
+GlobalResources="*uid://b5iqo0y2c3242"
 
 [input]
 

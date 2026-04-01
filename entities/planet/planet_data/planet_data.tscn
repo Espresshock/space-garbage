@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://qy43ivxk8jbg"]
+
+[ext_resource type="Script" uid="uid://b3ghjnnu8xhl" path="res://entities/planet/planet_data/planet_data.gd" id="1_oxigo"]
+
+[node name="PlanetData" type="Node" unique_id=954267080]
+script = ExtResource("1_oxigo")

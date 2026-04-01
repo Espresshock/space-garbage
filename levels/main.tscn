@@ -22,7 +22,12 @@ texture = ExtResource("1_l8qe7")
 rocket = ExtResource("4_ifaiv")
 
 [node name="HUD" parent="." unique_id=504352199 instance=ExtResource("4_m1504")]
-offset_left = -1254.0
-offset_top = -654.0
-offset_right = -1254.0
-offset_bottom = -654.0
+anchors_preset = 15
+anchor_right = 1.0
+offset_left = -1143.0
+offset_top = 6.0
+offset_right = -1143.0
+offset_bottom = 6.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

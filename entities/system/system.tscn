@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bc5xkfvj5b60y" path="res://entities/system/system.gd" id="1_ubswk"]
 [ext_resource type="Texture2D" uid="uid://dfrapryew5hdk" path="res://assets/art/planet/3693585547.png" id="2_osol0"]
 [ext_resource type="PackedScene" uid="uid://b3mixkcp4t75c" path="res://entities/planet/planet.tscn" id="3_38bj3"]
+[ext_resource type="PackedScene" uid="uid://qy43ivxk8jbg" path="res://entities/planet/planet_data/planet_data.tscn" id="4_38bj3"]
 [ext_resource type="PackedScene" uid="uid://cyt2j2nenkm3m" path="res://entities/asteroid_field/asteroid_field.tscn" id="4_osol0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cab44"]
@@ -1826,28 +1827,68 @@ frame_progress = 0.55520225
 scale = Vector2(1.1, 1.1)
 skew = 0.05235988
 
-[node name="Planet" parent="Orbit1" unique_id=1960501346 instance=ExtResource("3_38bj3")]
+[node name="Planet" parent="Orbit1" unique_id=1960501346 node_paths=PackedStringArray("planet_data") instance=ExtResource("3_38bj3")]
 position = Vector2(200, -200)
+planet_data = NodePath("PlanetData2")
+
+[node name="PlanetData2" parent="Orbit1/Planet" unique_id=65683980 instance=ExtResource("4_38bj3")]
+inputs = Array[int]([0, 4])
+input_costs = Array[int]([1, 1])
+input_stored = Array[int]([50, 50])
+production_rate = 10.0
+outputs = Array[int]([5])
+output_quantity = Array[int]([1])
+output_stored = Array[int]([25])
 
 [node name="Orbit6" type="Node2D" parent="Orbit1/Planet" unique_id=1182928696]
 scale = Vector2(0.4848484, 0.48484847)
 
-[node name="Planet" parent="Orbit1/Planet/Orbit6" unique_id=1629962235 instance=ExtResource("3_38bj3")]
+[node name="Planet" parent="Orbit1/Planet/Orbit6" unique_id=1629962235 node_paths=PackedStringArray("planet_data") instance=ExtResource("3_38bj3")]
 position = Vector2(125, 250)
+planet_data = NodePath("PlanetData")
+
+[node name="PlanetData" parent="Orbit1/Planet/Orbit6/Planet" unique_id=954267080 instance=ExtResource("4_38bj3")]
+inputs = Array[int]([0, 5])
+input_costs = Array[int]([2, 1])
+input_stored = Array[int]([0, 0])
+production_rate = 4.0
+outputs = Array[int]([1])
+output_quantity = Array[int]([2])
+output_stored = Array[int]([0])
 
 [node name="Orbit2" type="Node2D" parent="." unique_id=115477855]
 scale = Vector2(2, 2)
 skew = 0.08726646
 
-[node name="Planet" parent="Orbit2" unique_id=24726162 instance=ExtResource("3_38bj3")]
+[node name="Planet" parent="Orbit2" unique_id=24726162 node_paths=PackedStringArray("planet_data") instance=ExtResource("3_38bj3")]
 position = Vector2(250, 0)
+planet_data = NodePath("PlanetData")
+
+[node name="PlanetData" parent="Orbit2/Planet" unique_id=1349780747 instance=ExtResource("4_38bj3")]
+inputs = Array[int]([0, 1, 5])
+input_costs = Array[int]([2, 2, 1])
+input_stored = Array[int]([0, 0, 0])
+production_rate = 5.0
+outputs = Array[int]([4])
+output_quantity = Array[int]([4])
+output_stored = Array[int]([0])
 
 [node name="Orbit3" type="Node2D" parent="." unique_id=303417273]
 scale = Vector2(1.5, 1.5)
 skew = -0.05235988
 
-[node name="Planet" parent="Orbit3" unique_id=1437515774 instance=ExtResource("3_38bj3")]
+[node name="Planet" parent="Orbit3" unique_id=1437515774 node_paths=PackedStringArray("planet_data") instance=ExtResource("3_38bj3")]
 position = Vector2(-475, 0)
+planet_data = NodePath("PlanetData")
+
+[node name="PlanetData" parent="Orbit3/Planet" unique_id=412758877 instance=ExtResource("4_38bj3")]
+inputs = Array[int]([1, 5])
+input_costs = Array[int]([4, 1])
+input_stored = Array[int]([0, 0])
+production_rate = 10.0
+outputs = Array[int]([2])
+output_quantity = Array[int]([3])
+output_stored = Array[int]([0])
 
 [node name="Orbit4" type="Node2D" parent="." unique_id=1823757137]
 
@@ -1857,8 +1898,18 @@ position = Vector2(999, 555)
 [node name="Orbit5" type="Node2D" parent="." unique_id=1702158002]
 scale = Vector2(0.9, 0.9)
 
-[node name="Planet" parent="Orbit5" unique_id=1582893104 instance=ExtResource("3_38bj3")]
+[node name="Planet" parent="Orbit5" unique_id=1582893104 node_paths=PackedStringArray("planet_data") instance=ExtResource("3_38bj3")]
 position = Vector2(899, 333)
+planet_data = NodePath("PlanetData")
+
+[node name="PlanetData" parent="Orbit5/Planet" unique_id=2107750567 instance=ExtResource("4_38bj3")]
+inputs = Array[int]([5])
+input_costs = Array[int]([1])
+input_stored = Array[int]([100])
+production_rate = 5.0
+outputs = Array[int]([0])
+output_quantity = Array[int]([2])
+output_stored = Array[int]([0])
 
 [node name="GPUParticles2D" parent="." unique_id=1773267613 instance=ExtResource("4_osol0")]
 
